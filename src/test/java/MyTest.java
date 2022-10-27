@@ -58,6 +58,8 @@ public class MyTest {
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
         signInButton.click();
 
+        WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[text()='Invalid Email or password.']"));
+        Assert.assertEquals(invalidEmailOrPass.getText(), "Invalid Email or password.");
     }
 
     //After test
