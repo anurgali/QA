@@ -43,6 +43,23 @@ public class MyTest {
         Assert.assertEquals(or.getText(),"or");
     }
 
+    @Test
+    public void wrongCredentialsTest(){
+        WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
+        emailField.click();
+        emailField.clear();
+        emailField.sendKeys("ckbcskakqrfeumnlxg@kvhrw.com");
+
+        WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
+        passField.click();
+        passField.clear();
+        passField.sendKeys("38fBFGbx3yQjJ7P");
+
+        WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+        signInButton.click();
+
+    }
+
     //After test
     @AfterMethod
     public void cleanUp(){
