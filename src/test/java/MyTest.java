@@ -16,8 +16,8 @@ public class MyTest {
     //Before test
     @BeforeMethod
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver",
-                "/Users/albertnurgaliev/Downloads/chromedriver");
+        String path = System.getenv("qwe");
+        System.setProperty("webdriver.chrome.driver", path);
         driver = new ChromeDriver();
         driver.get("https://cloudrein.com/newapp#/sign-in");
         driver.manage().window().maximize();
