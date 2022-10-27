@@ -62,6 +62,31 @@ public class MyTest {
         Assert.assertEquals(invalidEmailOrPass.getText(), "Invalid Email or password.");
     }
 
+    @Test
+    public void correctCredentialsTest() throws InterruptedException {
+        WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
+        emailField.click();
+        emailField.clear();
+        emailField.sendKeys("testQA36a@gmail.com");
+
+        WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
+        passField.click();
+        passField.clear();
+        passField.sendKeys("Qwer1234");
+
+        WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+        signInButton.click();
+
+        Thread.sleep(5000);
+
+        WebElement headEmail = driver.findElement(By.xpath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 Jmbq']"));
+        Assert.assertEquals(headEmail.getText(),"testqa36a@gmail.com");
+
+
+
+
+    }
+
     //After test
     @AfterMethod
     public void cleanUp(){
