@@ -1,5 +1,6 @@
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,7 +24,8 @@ public class FirstSeleniumTest {
                 "/Users/albertnurgaliev/Downloads/chromedriver");
         driver = new ChromeDriver();//FirefoxDriver()
         driver.get("https://cloudrein.com/newapp#/sign-in");
-        driver.manage().window().maximize();
+       // driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(500,500));
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
@@ -63,6 +65,7 @@ public class FirstSeleniumTest {
         //input[@id='search']/../input[@type='button']
         //*[@class='className']/../th[4]
 
+        //span[text()='Sign In']
          */
 
         /*
@@ -105,14 +108,14 @@ public class FirstSeleniumTest {
         WebElement partial = driver.findElement(By.partialLinkText("sdf"));
 
         WebElement search = driver.findElement(By.xpath("//h2[contains(.,'Hello')]"));
-
-        Alert alert = new WebDriverWait(driver, Duration.ofSeconds(1)).until(ExpectedConditions.alertIsPresent());
-        driver.switchTo().alert();
-        alert.accept();
-
+        /*
+        Alert alert = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.alertIsPresent());
+        //driver.switchTo().alert();
+        //alert.accept();
+        */
     }
 
-    @AfterMethod(enabled = true)
+    @AfterMethod(enabled = false)
     public void tearDown(){
         driver.quit();
     }
