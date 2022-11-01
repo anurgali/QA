@@ -48,7 +48,7 @@ public class MyTest {
     }
 
     @Test
-    public void wrongCredentialsTest() throws InterruptedException {
+    public void signInIsEnabledTest() throws InterruptedException {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();
         emailField.clear();
@@ -62,17 +62,11 @@ public class MyTest {
         Actions a=new Actions(driver);
         a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
 
-
-
-        passField.clear();
-
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
-        signInButton.click();
 
-        WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[text()='Invalid Email or password.']"));
-        Assert.assertEquals(invalidEmailOrPass.getText(), "Invalid Email or password.");
+        Assert.assertFalse(signInButton.isEnabled());
 
-    }
+    }/**/
 
     @Test
     public void correctCredentialsTest() throws InterruptedException {
@@ -122,7 +116,7 @@ public class MyTest {
     }
 
     //After test
-    @AfterMethod
+    @AfterMethod(enabled = false)
     public void cleanUp(){
         driver.quit();
     }
