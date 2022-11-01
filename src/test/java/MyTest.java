@@ -73,7 +73,7 @@ public class MyTest {
         Assert.assertEquals(invalidEmailOrPass.getText(), "Invalid Email or password.");
 
     }
-
+// added positive test cases
     //After test
     @AfterMethod
     public void cleanUp(){
