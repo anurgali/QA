@@ -113,6 +113,11 @@ public class FirstSeleniumTest {
         //driver.switchTo().alert();
         //alert.accept();
         */
+
+        /*
+         Actions a=new Actions(driver);
+        a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
+         */
     }
 
     @AfterMethod(enabled = false)
