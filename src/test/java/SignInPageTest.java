@@ -7,23 +7,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class MyTest {
+public class SignInPageTest extends TestBase {
 
-    WebDriver driver;
-
-    //Before test
-    @BeforeMethod
-    public void setUp(){
-        String path = System.getenv("qwe");
-        System.setProperty("webdriver.chrome.driver", path);
-        driver = new ChromeDriver();
-        driver.get("https://cloudrein.com/newapp#/sign-in");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    @BeforeSuite
+    public void setUpInternal(){
+        super.url="https://cloudrein.com/newapp#/sign-in";
     }
 
     //test1
@@ -116,9 +109,4 @@ public class MyTest {
 
     }
 
-    //After test
-    @AfterMethod(enabled = false)
-    public void cleanUp(){
-        driver.quit();
-    }
 }
