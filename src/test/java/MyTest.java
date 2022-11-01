@@ -105,12 +105,13 @@ public class MyTest {
         passField.sendKeys("Qwer123");
 
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
-        signInButton.click();
+        for (int i=0; i<10; i++) {
+            signInButton.click();
+            Thread.sleep(100);
+        }
 
 
-        Thread.sleep(5000);
-
-        WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[class()='StyledSignIn__Error-sc-t0jmvd-4 eYlGJp']"));
+        WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[@class='StyledSignIn__Error-sc-t0jmvd-4 eYlGJp']"));
         Assert.assertEquals(signInButton.getText(), "Too many login failures, this account will be locked for 10 minutes.");
 
     }
