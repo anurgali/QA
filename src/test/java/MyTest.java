@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 public class MyTest {
@@ -48,12 +49,12 @@ public class MyTest {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();
         emailField.clear();
-        emailField.sendKeys("ckbcskakqrfeumnlxg@kvhrw.com");
+        emailField.sendKeys("and3@gmail");
 
         WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
         passField.click();
         passField.clear();
-        passField.sendKeys("38fBFGbx3yQjJ7P");
+        passField.sendKeys("!@#ZXCasd567");
 
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
         signInButton.click();
@@ -61,7 +62,17 @@ public class MyTest {
         WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[text()='Invalid Email or password.']"));
         Assert.assertEquals(invalidEmailOrPass.getText(), "Invalid Email or password.");
     }
-
+/*@Test
+public void findTitleLessonRecording(){
+    String WebElement = driver.getTitle(By.xpath("//div[text()='Lesson record']");
+    Label lessonRrecording = null;
+    Assert.assertEquals(lessonRrecording .getText(),"Lesson record");
+}*/
+@Test
+public void findButton(){
+    WebElement signInButton = driver.findElement(By.xpath("//button[//td[@xpath='1']"));
+    signInButton.click();
+}
     //After test
     @AfterMethod
     public void cleanUp(){
