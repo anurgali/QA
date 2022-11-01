@@ -1,13 +1,14 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 public class MyTest {
@@ -42,37 +43,37 @@ public class MyTest {
     public void findClass(){
         WebElement or = driver.findElement(By.xpath("//p[@class='StyledLineSeparator__TextSeparator-sc-tvmx61-2 gGaiwp']"));
         Assert.assertEquals(or.getText(),"or");
+
+
     }
 
     @Test
-    public void wrongCredentialsTest(){
+    public void wrongCredentialsTest() throws InterruptedException {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();
         emailField.clear();
-        emailField.sendKeys("and3@gmail");
+        emailField.sendKeys("ckbcskakqrfeumnlxg@kvhrw.com");
+
 
         WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
         passField.click();
+        passField.sendKeys("38fBFGbx3yQjJ7P");
+        Thread.sleep(1000);
+        Actions a=new Actions(driver);
+        a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
+
+
+
         passField.clear();
-        passField.sendKeys("!@#ZXCasd567");
 
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
         signInButton.click();
 
         WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[text()='Invalid Email or password.']"));
         Assert.assertEquals(invalidEmailOrPass.getText(), "Invalid Email or password.");
+
     }
-/*@Test
-public void findTitleLessonRecording(){
-    String WebElement = driver.getTitle(By.xpath("//div[text()='Lesson record']");
-    Label lessonRrecording = null;
-    Assert.assertEquals(lessonRrecording .getText(),"Lesson record");
-}*/
-@Test
-public void findButton(){
-    WebElement signInButton = driver.findElement(By.xpath("//button[//td[@xpath='1']"));
-    signInButton.click();
-}
+
     //After test
     @AfterMethod
     public void cleanUp(){
