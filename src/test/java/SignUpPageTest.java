@@ -16,8 +16,8 @@ public class SignUpPageTest extends TestBase{
 
     @BeforeSuite
     public void setUpInternal(){
-        System.out.println("111111111");
-        super.url="https://cloudrein.com/newapp#/sign-up";
+
+        super.url="https://partner.cloudrein.com//sign-up";
     }
 
     @Test
@@ -25,6 +25,10 @@ public class SignUpPageTest extends TestBase{
         WebElement tag = driver.findElement(By.xpath("//h2[@class='ant-typography StyledTypography__StyledTitle-sc-d1hytu-0 MxoCQ StyledTypography__HeadingTitle-sc-d1hytu-2 Title-sc-1n24hbd-0 StyledFormBlock__FormTitle-sc-16aqzbf-2 huyklH ndPRA bUplke']"));
         Assert.assertEquals(tag.getText(),"Sign up for a 14 Day Free Trial");
     }
+
+
+
+
 
 
 }
