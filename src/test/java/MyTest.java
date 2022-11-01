@@ -98,6 +98,28 @@ public class MyTest {
 
 
     }
+    @Test
+    public void tenErrorTest() throws InterruptedException {
+        WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
+        emailField.click();
+        emailField.clear();
+        emailField.sendKeys("testQA36a@gmail.com");
+
+        WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
+        passField.click();
+        passField.clear();
+        passField.sendKeys("Qwer123");
+
+        WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+        signInButton.click();
+
+
+        Thread.sleep(5000);
+
+        WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[class()='StyledSignIn__Error-sc-t0jmvd-4 eYlGJp']"));
+        Assert.assertEquals(signInButton.getText(), "Too many login failures, this account will be locked for 10 minutes.");
+
+    }
 
     //After test
     @AfterMethod
