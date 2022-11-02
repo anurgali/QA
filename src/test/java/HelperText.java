@@ -22,6 +22,6 @@ public class HelperText  extends TestBase{
         Assert.assertEquals(i.getText(), "Please enter a valid Email address");
     }
 
-
+    //negativ forget password
 }
 
