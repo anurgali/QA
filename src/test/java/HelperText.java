@@ -3,7 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-
+import java.util.concurrent.TimeUnit;
 public class HelperText  extends TestBase{
 
     @BeforeSuite
@@ -22,6 +22,6 @@ public class HelperText  extends TestBase{
         Assert.assertEquals(i.getText(), "Please enter a valid Email address");
     }
 
-    //negativ forget password
+    //negative test password reset.
 }
 
