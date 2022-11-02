@@ -14,7 +14,7 @@ public class TestBase {
     //Before test
     @BeforeMethod
     public void setUp() {
-        System.out.println("00000000");
+        //System.out.println("00000000");
         String path = System.getenv("qwe");
         System.setProperty("webdriver.chrome.driver", path);
         driver = new ChromeDriver();
