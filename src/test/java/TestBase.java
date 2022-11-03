@@ -13,6 +13,14 @@ public class TestBase {
     WebDriver driver;
     String url;
 
+    public static void sleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     //Before test
     @BeforeTest
     public void setUp() {

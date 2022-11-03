@@ -1,9 +1,9 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends TestBase{
@@ -18,16 +18,20 @@ public class HomePageTest extends TestBase{
 
     @BeforeMethod
     public void signInCheck(){
-        WebElement logOut = driver.findElement(By.xpath("//span[@xpath='1']"));
-        if (!(logOut !=null && logOut.getText().equals("Log Out"))){
+        sleep(1000);
+        try {
+            WebElement logOut = driver.findElement(By.xpath("//span[@xpath='1']"));
+        } catch (NoSuchElementException exception){
             //we are not logged in and we need to sign in
             signIn();
         }
+
     }
 
     @Test
     public void homePageExistenceTest(){
-        WebElement homepage = driver.findElement(By.xpath("//h3[@xpath='1']"));
+        sleep(3000);
+        WebElement homepage = driver.findElement(By.xpath("//h3[@class='ant-typography StyledTypography__StyledTitle-sc-d1hytu-0 MxoCQ StyledTypography__SubTitle-sc-d1hytu-3 StyledPageTitle__PageTitle-sc-18q9nsb-0  eyseN']"));
         Assert.assertEquals(homepage.getText(),"Homepage");
     }
 

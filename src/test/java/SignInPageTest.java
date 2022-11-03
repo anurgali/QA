@@ -35,7 +35,7 @@ public class SignInPageTest extends TestBase {
     }
 
     @Test
-    public void signInIsEnabledTest() throws InterruptedException {
+    public void signInIsEnabledTest() {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();
         emailField.clear();
@@ -45,7 +45,7 @@ public class SignInPageTest extends TestBase {
         WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
         passField.click();
         passField.sendKeys("38fBFGbx3yQjJ7P");
-        Thread.sleep(1000);
+        sleep(1000);
         Actions a=new Actions(driver);
         a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
 
@@ -56,15 +56,15 @@ public class SignInPageTest extends TestBase {
     }/**/
 
     @Test
-    public void correctCredentialsTest() throws InterruptedException {
+    public void correctCredentialsTest() {
         signIn();
-        Thread.sleep(5000);
+        sleep(1000);
         WebElement headEmail = driver.findElement(By.xpath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 Jmbq']"));
         Assert.assertEquals(headEmail.getText(),"testqa36a@gmail.com");
     }
 
     @Test
-    public void tenErrorTest() throws InterruptedException {
+    public void tenErrorTest() {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();
         emailField.clear();
@@ -78,7 +78,7 @@ public class SignInPageTest extends TestBase {
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
         for (int i=0; i<10; i++) {
             signInButton.click();
-            Thread.sleep(100);
+            sleep(100);
         }
 
 
