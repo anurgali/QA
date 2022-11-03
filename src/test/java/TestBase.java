@@ -44,7 +44,7 @@ public class TestBase {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();
         emailField.clear();
-        emailField.sendKeys("testQA36a@gmail.com");
+        emailField.sendKeys(MyCredential.email3);
 
         WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
         passField.click();

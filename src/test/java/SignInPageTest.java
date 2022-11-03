@@ -60,7 +60,7 @@ public class SignInPageTest extends TestBase {
         signIn();
         sleep(1000);
         WebElement headEmail = driver.findElement(By.xpath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 Jmbq']"));
-        Assert.assertEquals(headEmail.getText(),"testqa36a@gmail.com");
+        Assert.assertEquals(headEmail.getText(), MyCredential.email3);
     }
 
     @Test
@@ -68,12 +68,12 @@ public class SignInPageTest extends TestBase {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();
         emailField.clear();
-        emailField.sendKeys("testQA36a@gmail.com");
+        emailField.sendKeys(MyCredential.email3);
 
         WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
         passField.click();
         passField.clear();
-        passField.sendKeys("Qwer123");
+        passField.sendKeys(MyCredential.passEmail3);
 
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
         for (int i=0; i<10; i++) {
