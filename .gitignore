@@ -4,3 +4,4 @@
 /target/QA36-1.0-SNAPSHOT.jar
 /.idea/*.*
 /target/test-classes/*.class
+/.idea/inspectionProfiles/Project_Default.xml
