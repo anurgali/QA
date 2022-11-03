@@ -2,14 +2,5 @@
 /target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
 /target/maven-archiver/pom.properties
 /target/QA36-1.0-SNAPSHOT.jar
-/*.xml
-/target/test-classes/FirstSeleniumTest.class
-/target/test-classes/SignInPageTest.class
-/target/test-classes/SignUpPageTest.class
-/target/test-classes/TestBase.class
-/.idea/compiler.xml
-/.idea/encodings.xml
-/.idea/jarRepositories.xml
-/.idea/misc.xml
-/.idea/uiDesigner.xml
-/.idea/vcs.xml
+/.idea/*.*
+/target/test-classes/*.class
