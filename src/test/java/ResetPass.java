@@ -20,13 +20,13 @@ public class ResetPass extends TestBase {
     }
     @Test
     public void incorrectEmailResetpassTest()  {
-        WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
+        WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
         emailField.sendKeys("smikoann@gmail.co");
 
 
-        WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+        WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
         signInButton.click();
 
        // Thread.sleep(5000);

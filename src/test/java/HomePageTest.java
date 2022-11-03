@@ -18,7 +18,7 @@ public class HomePageTest extends TestBase{
     public void signInCheck(){
         sleep(1000);
         try {
-            WebElement logOut = driver.findElement(By.xpath("//span[@xpath='1']"));
+            WebElement logOut = findByXPath("//span[@xpath='1']");
         } catch (NoSuchElementException exception){
             //we are not logged in and we need to sign in
             signIn();
@@ -29,7 +29,7 @@ public class HomePageTest extends TestBase{
     @Test
     public void homePageExistenceTest(){
         sleep(3000);
-        WebElement homepage = driver.findElement(By.xpath("//h3[@class='ant-typography StyledTypography__StyledTitle-sc-d1hytu-0 MxoCQ StyledTypography__SubTitle-sc-d1hytu-3 StyledPageTitle__PageTitle-sc-18q9nsb-0  eyseN']"));
+        WebElement homepage = findByXPath("//h3[@class='ant-typography StyledTypography__StyledTitle-sc-d1hytu-0 MxoCQ StyledTypography__SubTitle-sc-d1hytu-3 StyledPageTitle__PageTitle-sc-18q9nsb-0  eyseN']");
         Assert.assertEquals(homepage.getText(),"Homepage");
     }
 

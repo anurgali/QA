@@ -14,7 +14,7 @@ public class HelperText  extends TestBase{
 
     @Test
     public void passResetTest(){
-        WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
+        WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
         emailField.sendKeys("Andre3gmail");
