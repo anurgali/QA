@@ -54,4 +54,8 @@ public class TestBase {
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
         signInButton.click();
     }
+
+    protected WebElement findByXPath(String xpathExpression) {
+        return driver.findElement(By.xpath(xpathExpression));
+    }
 }

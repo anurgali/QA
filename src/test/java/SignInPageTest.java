@@ -28,7 +28,7 @@ public class SignInPageTest extends TestBase {
 
     @Test
     public void findClass(){
-        WebElement or = driver.findElement(By.xpath("//p[@class='StyledLineSeparator__TextSeparator-sc-tvmx61-2 gGaiwp']"));
+        WebElement or = findByXPath("//p[@class='StyledLineSeparator__TextSeparator-sc-tvmx61-2 gGaiwp']");
         Assert.assertEquals(or.getText(),"or");
 
 
@@ -36,14 +36,14 @@ public class SignInPageTest extends TestBase {
 
     @Test
     public void signInIsEnabledTest() {
-        WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
+        WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
         SecondCredentials.email2 = "ckbcskakqrfeumnlxg@kvhrw.com";
         emailField.sendKeys(SecondCredentials.email2);
 
 
-        WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
+        WebElement passField = findByXPath("//input[@placeholder=\"Password\"]");
         passField.click();
         SecondCredentials.password2 = "38fBFGbx3yQjJ7P";
         passField.sendKeys(SecondCredentials.password2);
@@ -51,7 +51,7 @@ public class SignInPageTest extends TestBase {
         Actions a=new Actions(driver);
         a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
 
-        WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+        WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
 
         Assert.assertFalse(signInButton.isEnabled());
 
@@ -61,30 +61,30 @@ public class SignInPageTest extends TestBase {
     public void correctCredentialsTest() {
         signIn();
         sleep(1000);
-        WebElement headEmail = driver.findElement(By.xpath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 Jmbq']"));
+        WebElement headEmail = findByXPath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 Jmbq']");
         Assert.assertEquals(headEmail.getText(), MyCredential.email3);
     }
 
     @Test
     public void tenErrorTest() {
-        WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
+        WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
         emailField.sendKeys(MyCredential.email3);
 
-        WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
+        WebElement passField = findByXPath("//input[@placeholder=\"Password\"]");
         passField.click();
         passField.clear();
         passField.sendKeys(MyCredential.passEmail3);
 
-        WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+        WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
         for (int i=0; i<10; i++) {
             signInButton.click();
             sleep(100);
         }
 
 
-        WebElement invalidEmailOrPass = driver.findElement(By.xpath("//div[@class='StyledSignIn__Error-sc-t0jmvd-4 eYlGJp']"));
+        WebElement invalidEmailOrPass = findByXPath("//div[@class='StyledSignIn__Error-sc-t0jmvd-4 eYlGJp']");
         Assert.assertEquals(signInButton.getText(), "Too many login failures, this account will be locked for 10 minutes.");
 
     }
