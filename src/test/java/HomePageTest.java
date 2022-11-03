@@ -12,8 +12,6 @@ public class HomePageTest extends TestBase{
     @BeforeSuite
     public void setUpInternal(){
         super.url="https://cloudrein.com/newapp#/backups";
-
-
     }
 
     @BeforeMethod
