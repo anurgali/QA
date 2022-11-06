@@ -39,14 +39,14 @@ public class SignInPageTest extends TestBase {
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
-        SecondCredentials.email2 = "ckbcskakqrfeumnlxg@kvhrw.com";
-        emailField.sendKeys(SecondCredentials.email2);
+        MyCredential.email2 = "ckbcskakqrfeumnlxg@kvhrw.com";
+        emailField.sendKeys(MyCredential.email2);
 
 
         WebElement passField = findByXPath("//input[@placeholder=\"Password\"]");
         passField.click();
-        SecondCredentials.password2 = "38fBFGbx3yQjJ7P";
-        passField.sendKeys(SecondCredentials.password2);
+        MyCredential.password2 = "38fBFGbx3yQjJ7P";
+        passField.sendKeys(MyCredential.password2);
         sleep(1000);
         Actions a=new Actions(driver);
         a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
