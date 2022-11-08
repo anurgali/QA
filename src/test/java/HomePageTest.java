@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class HomePageTest extends TestBase{
 Logger logger= LoggerFactory.getLogger(TestBase.class);
-// logging to HPTest.
+// logging to HPTest.2
     //1 logger.
     @BeforeSuite
     public void setUpInternal(){
