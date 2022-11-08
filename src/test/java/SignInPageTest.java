@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 public class SignInPageTest extends TestBase {
 
+
     @BeforeSuite
     public void setUpInternal(){
         super.url="https://cloudrein.com/newapp#/sign-in";
@@ -39,13 +40,15 @@ public class SignInPageTest extends TestBase {
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
-        MyCredential.email2 = "ckbcskakqrfeumnlxg@kvhrw.com";
+
+                MyCredential.email2 = MyAccountingData.incorrectemail;
         emailField.sendKeys(MyCredential.email2);
+
 
 
         WebElement passField = findByXPath("//input[@placeholder=\"Password\"]");
         passField.click();
-        MyCredential.password2 = "38fBFGbx3yQjJ7P";
+        MyCredential.password2 = MyAccountingData.newpassword;
         passField.sendKeys(MyCredential.password2);
         sleep(1000);
         Actions a=new Actions(driver);

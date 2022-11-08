@@ -20,7 +20,7 @@ public class HomePageTest extends TestBase{
         try {
             WebElement logOut = findByXPath("//span[@xpath='1']");
         } catch (NoSuchElementException exception){
-            //we are not logged in and we need to sign in
+            //we are not logged in, and we need to sign in
             signIn();
         }
 
