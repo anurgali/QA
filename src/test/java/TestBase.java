@@ -14,6 +14,11 @@ public class TestBase {
     WebDriver driver;
     String url;
 
+    public static String getTagName(String tagName) {
+        return tagName;
+    }
+    //tel-27
+
     //Before test
     @BeforeTest
     public void setUp() {
