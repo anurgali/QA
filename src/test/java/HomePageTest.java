@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 public class HomePageTest extends TestBase{
 Logger logger= LoggerFactory.getLogger(TestBase.class);
 // logging to HPTest.
+    //1 logger.
     @BeforeSuite
     public void setUpInternal(){
         super.url="https://cloudrein.com/newapp#/backups";
