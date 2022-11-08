@@ -58,7 +58,7 @@ public class SignInPageTest extends TestBase {
         WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
 
         Assert.assertFalse(signInButton.isEnabled());
-
+        logger.info("finished signInIsEnabledTest.");
     }
 
     @Test

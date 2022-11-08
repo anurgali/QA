@@ -12,14 +12,14 @@
 
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>testFile-${bySecond}.log</file>
+        <file>src/test/resources/testFile-${bySecond}.log</file>
         <append>true</append>
         <!-- set immediateFlush to false for much higher logging throughput -->
         <immediateFlush>true</immediateFlush>
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %M %L %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
