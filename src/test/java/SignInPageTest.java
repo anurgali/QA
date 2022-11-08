@@ -15,14 +15,18 @@ public class SignInPageTest extends TestBase {
 
     //test1
     @Test
-    public void headerTest() throws Exception {
-        WebElement tag = driver.findElement(By.tagName("h1"));
+    public void headerTest(String name) throws Exception {
+        WebElement tag = findByTagName(name);
         Assert.assertEquals(tag.getText(),"Sign In to your Account");
+    }
+
+    private WebElement findByTagName(String name) {
+        return driver.findElement(By.tagName(name));
     }
 
     @Test
     public void mySecondTest(){
-        WebElement tag = driver.findElement(By.tagName("h1"));
+        WebElement tag = findByTagName("h1");
         Assert.assertTrue(tag.getText().contains("Sign In"));
     }
 
