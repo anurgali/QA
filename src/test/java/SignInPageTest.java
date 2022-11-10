@@ -89,6 +89,18 @@ public class SignInPageTest extends TestBase {
         Assert.assertEquals(headEmail.getText(), user.getEmail().toLowerCase());
     }
 
+    @Test(dataProvider = "NegativescenarioSignInCSV", dataProviderClass = DataProvidersTel31.class)
+    public void wrongCredentialsTestWithCsv(MyCredential user) {
+        signIn(user.getEmail(), user.getPassword());
+        sleep(1000);
+        WebElement invalidEmailOrPass = findByXPath("//div[@class='StyledSignIn__Error-sc-t0jmvd-4 eYlGJp']");
+        Assert.assertEquals(invalidEmailOrPass.getText(), "Invalid Email or password.");
+
+
+
+    }
+
+
     @Test
     public void tenErrorTest() {
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
