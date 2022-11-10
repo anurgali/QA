@@ -4,9 +4,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class SignInPageTest extends TestBase {
+
+
 
     @BeforeSuite
     public void setUpInternal(){
@@ -61,12 +73,20 @@ public class SignInPageTest extends TestBase {
         logger.info("finished signInIsEnabledTest.");
     }
 
-    @Test
-    public void correctCredentialsTest() {
-        signIn();
+    @Test(dataProvider = "newUser", dataProviderClass = MyDataProviders.class)
+    public void correctCredentialsTest(String email, String pass) {
+        signIn(email, pass);
         sleep(1000);
         WebElement headEmail = findByXPath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 Jmbq']");
-        Assert.assertEquals(headEmail.getText(), MyCredential.email3);
+        Assert.assertEquals(headEmail.getText(), email.toLowerCase());
+    }
+
+    @Test(dataProvider = "newUserWithCsv", dataProviderClass = MyDataProviders.class)
+    public void correctCredentialsTestWithCsv(MyCredential user) {
+        signIn(user.getEmail(), user.getPassword());
+        sleep(1000);
+        WebElement headEmail = findByXPath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 Jmbq']");
+        Assert.assertEquals(headEmail.getText(), user.getEmail().toLowerCase());
     }
 
     @Test

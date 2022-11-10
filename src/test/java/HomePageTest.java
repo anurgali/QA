@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -21,7 +20,7 @@ public class HomePageTest extends TestBase{
             WebElement logOut = findByXPath("//span[@xpath='1']");
         } catch (NoSuchElementException exception){
             //we are not logged in, and we need to sign in
-            signIn();
+            signIn(MyCredential.email1, MyCredential.passEmail1);
         }
 
     }

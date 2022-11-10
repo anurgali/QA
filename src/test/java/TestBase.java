@@ -6,16 +6,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     WebDriver driver;
     String url;
-    Logger logger = LoggerFactory.getLogger(TestBase.class);
+    public static Logger logger = LoggerFactory.getLogger(TestBase.class);
 
 
     @Deprecated
@@ -25,7 +26,7 @@ public class TestBase {
     //tel-27
 
     //Before test
-    @BeforeTest
+    @BeforeMethod
     public void setUp() {
         //System.out.println("00000000");
         String path = System.getenv("qwe");
@@ -36,8 +37,13 @@ public class TestBase {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
+    @BeforeMethod
+    public void logMethod(Method m, Object[] p){
+        logger.info("Starting method: " + m.getName()+" with data: "+ Arrays.asList(p));
+    }
+
     //After test
-    @AfterSuite(enabled = true)
+    @AfterMethod(enabled = true)
     public void cleanUp() {
         driver.quit();
     }
@@ -50,16 +56,16 @@ public class TestBase {
         }
     }
     //helper method
-    public void signIn() {
+    public void signIn(String email, String pass) {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
         emailField.click();
         emailField.clear();
-        emailField.sendKeys(MyCredential.email3);
+        emailField.sendKeys(email);
 
         WebElement passField = driver.findElement(By.xpath("//input[@placeholder=\"Password\"]"));
         passField.click();
         passField.clear();
-        passField.sendKeys("Qwer1234");
+        passField.sendKeys(pass);
 
         WebElement signInButton = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
         signInButton.click();
