@@ -41,8 +41,12 @@ public class TestBase {
             path = System.getenv("firefoxDriver");
             System.setProperty("webdriver.gecko.driver", path);
             driver = new FirefoxDriver();
+            else if (browser.equals(Browser.EDGE.browserName())) {
+                path = System.getenv("edgeDriver");
+                System.setProperty("webdriver.edge.driver", path);
+                driver = new edgeDriver();
         } else {
-            logger.error("No supported browser specified. Supported browsers: chrome, firefox");
+            logger.error("No supported browser specified. Supported browsers: chrome, firefox,edge");
         }
 
         driver.get(url);
