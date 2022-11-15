@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,10 +42,11 @@ public class TestBase {
             path = System.getenv("firefoxDriver");
             System.setProperty("webdriver.gecko.driver", path);
             driver = new FirefoxDriver();
+        }
             else if (browser.equals(Browser.EDGE.browserName())) {
                 path = System.getenv("edgeDriver");
                 System.setProperty("webdriver.edge.driver", path);
-                driver = new edgeDriver();
+                driver = new EdgeDriver();
         } else {
             logger.error("No supported browser specified. Supported browsers: chrome, firefox,edge");
         }
