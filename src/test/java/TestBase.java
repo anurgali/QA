@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
@@ -12,10 +13,11 @@ import org.testng.annotations.BeforeTest;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.remote.Browser;
 
 public class TestBase {
     WebDriver driver;
-    String url;
+    String url, browser;
     public static Logger logger = LoggerFactory.getLogger(TestBase.class);
 
 
@@ -28,10 +30,21 @@ public class TestBase {
     //Before test
     @BeforeMethod
     public void setUp() {
-        //System.out.println("00000000");
-        String path = System.getenv("qwe");
-        System.setProperty("webdriver.chrome.driver", path);
-        driver = new ChromeDriver();
+        String path;
+
+        browser = System.getProperty("browser");
+        if (browser.equals(Browser.CHROME.browserName())) {
+            path = System.getenv("chromeDriver");
+            System.setProperty("webdriver.chrome.driver", path);
+            driver = new ChromeDriver();
+        } else if (browser.equals(Browser.FIREFOX.browserName())) {
+            path = System.getenv("firefoxDriver");
+            System.setProperty("webdriver.gecko.driver", path);
+            driver = new FirefoxDriver();
+        } else {
+            logger.error("No supported browser specified. Supported browsers: chrome, firefox");
+        }
+
         driver.get(url);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

@@ -26,7 +26,7 @@ public class SignInPageTest extends TestBase {
     }
 
     //test1
-    @Test
+    @Test(priority = 0)
     public void headerTest() throws Exception {
         logger.info("headerTest");
         WebElement tag = findByTagName("h1");
@@ -37,7 +37,8 @@ public class SignInPageTest extends TestBase {
         return driver.findElement(By.tagName(h1));
     }
 
-    @Test
+
+    @Test(priority = 1)
     public void mySecondTest(){
         WebElement tag = findByTagName("h1");
         Assert.assertTrue(tag.getText().contains("Sign In"));
