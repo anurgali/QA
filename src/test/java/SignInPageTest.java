@@ -44,7 +44,7 @@ public class SignInPageTest extends TestBase {
         Assert.assertTrue(tag.getText().contains("Sign In"));
     }
 
-    @Test
+    @Test(priority = 2)
     public void findClass(){
         WebElement or = findByXPath("//p[@class='StyledLineSeparator__TextSeparator-sc-tvmx61-2 gGaiwp']");
         Assert.assertEquals(or.getText(),"or");
@@ -78,7 +78,7 @@ public class SignInPageTest extends TestBase {
         logger.info("finished signInIsEnabledTest.");
     }
 
-    @Test(dataProvider = "newUser", dataProviderClass = MyDataProviders.class)
+    @Test(dataProvider = "newUser", dataProviderClass = MyDataProviders.class, priority = 5)
     public void correctCredentialsTest(String email, String pass) {
         signIn(email, pass);
         sleep(1000);
