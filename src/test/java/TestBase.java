@@ -23,6 +23,8 @@ public class TestBase {
     public static String getTagName(String tagName) {
         return tagName;
     }
+
+
     //tel-27
 
     //Before test
@@ -55,6 +57,7 @@ public class TestBase {
             throw new RuntimeException(e);
         }
     }
+
     //helper method
     public void signIn(String email, String pass) {
         WebElement emailField = driver.findElement(By.xpath("//input[@placeholder=\"Email\"]"));
@@ -75,3 +78,4 @@ public class TestBase {
         return driver.findElement(By.xpath(xpathExpression));
     }
 }
+    

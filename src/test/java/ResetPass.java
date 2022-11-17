@@ -18,12 +18,14 @@ public class ResetPass extends TestBase {
 
         super.url="https://partner.cloudrein.com/reset-password";
     }
-    @Test
-    public void incorrectEmailResetpassTest()  {
+
+    @Test(dataProvider = "reset", dataProviderClass = DataProvidersAR.class)
+    public void resetPassTest(String email)  {
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
-        emailField.sendKeys("smikoann@gmail.co");
+        emailField.sendKeys(email);
+
 
 
         WebElement signInButton = findByXPath("//button[@type=\"submit\"]");

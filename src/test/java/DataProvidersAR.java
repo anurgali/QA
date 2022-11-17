@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class MyDataProviders {
+public class DataProvidersAR {
 
     @DataProvider
     public Iterator<Object[]> newUser(){
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{"testQA36a@gmail.com","Qwer1234"});
-        list.add(new Object[]{"testQA36b@gmail.com","Qwer1234"});
-        list.add(new Object[]{"testQA36c@gmail.com","Qwer12345"});
+
         return list.iterator();
     }
 
@@ -28,7 +27,7 @@ public class MyDataProviders {
     public Iterator<Object[]> newUserWithCsv() {
         List<Object[]> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(
-                new FileReader("src/test/resources/123.csv"))) {
+                new FileReader("src/test/resources/AR.1.csv"))) {
             String line = reader.readLine();
             while (line != null) {
                 String[] data = line.split(",");
@@ -42,3 +41,4 @@ public class MyDataProviders {
         return list.iterator();
     }
 }
+// ADD tel-32

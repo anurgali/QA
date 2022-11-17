@@ -10,7 +10,11 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.concurrent.TimeUnit;
+
+
 
 public class SignUpPageTest extends TestBase{
 
@@ -19,6 +23,11 @@ public class SignUpPageTest extends TestBase{
 
         super.url="https://partner.cloudrein.com//sign-up";
     }
+
+    private void reset(String email) {
+    }
+
+
 
     @Test
     public void positiveScenarioTest(){
