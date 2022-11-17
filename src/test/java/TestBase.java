@@ -58,13 +58,16 @@ public class TestBase {
             path = System.getenv("firefoxDriver");
             System.setProperty("webdriver.gecko.driver", path);
             driver = new FirefoxDriver();
-        }
-            else if (browser.equals(Browser.EDGE.browserName())) {
-                path = System.getenv("edgeDriver");
-                System.setProperty("webdriver.edge.driver", path);
-                driver = new EdgeDriver();
+        } else if (browser.equals(Browser.OPERA.browserName())) {
+            path = System.getenv("operaDriver");
+            System.setProperty("webdriver.chrome.driver", path);
+            driver = new ChromeDriver();
+        } else if (browser.equals(Browser.EDGE.browserName())) {
+            path = System.getenv("edgeDriver");
+            System.setProperty("webdriver.edge.driver", path);
+            driver = new EdgeDriver();
         } else {
-            logger.error("No supported browser specified. Supported browsers: chrome, firefox,edge");
+            logger.error("No supported browser specified. Supported browsers: chrome, firefox,edge, opera");
         }
 
         driver.get(url);
