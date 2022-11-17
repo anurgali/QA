@@ -20,11 +20,13 @@ public class ResetPass extends TestBase {
     }
     @Test
     public void incorrectEmailResetpassTest()  {
+        logger.info("starting to test Resetpass is enabled.");
+
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
         emailField.sendKeys("smikoann@gmail.co");
-
+        logger.info("Enter incorrect Email'");
 
         WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
         signInButton.click();
@@ -34,6 +36,8 @@ public class ResetPass extends TestBase {
 
 
         Assert.assertEquals(text.getText(),"An email has been sent to you.");
+        logger.info("If Test successful get text 'An email has been sent to you'");
+
     }
     }
 
