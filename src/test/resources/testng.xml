@@ -3,7 +3,12 @@
 <suite name="CloudRein" verbose="1" >
     <test name="PublicPageTests" >
         <classes>
-            <class name="SignInPageTest" />
+            <class name="SignInPageTest">
+                <methods>
+                    <include name="headerTest"/>
+                    <exclude name="correctCredentialsTest"></exclude>
+                </methods>
+            </class>
             <class name="SignUpPageTest" />
         </classes>
     </test>
