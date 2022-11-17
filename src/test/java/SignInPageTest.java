@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,14 +55,22 @@ public class SignInPageTest extends TestBase {
 
     @Test
     public void signInIsEnabledTest() {
+        deleteRecording();
+        try {
+            startRecording();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
         logger.info("starting to test sign in is enabled.");
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
-
+        sleep(1000);
                 MyCredential.email2 = MyAccountingData.incorrectemail;
         emailField.sendKeys(MyCredential.email2);
-
+        sleep(1000);
 
 
         WebElement passField = findByXPath("//input[@placeholder=\"Password\"]");
@@ -71,11 +80,16 @@ public class SignInPageTest extends TestBase {
         sleep(1000);
         Actions a=new Actions(driver);
         a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
-
+        sleep(1000);
         WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
 
         Assert.assertFalse(signInButton.isEnabled());
         logger.info("finished signInIsEnabledTest.");
+        try {
+            stopRecoding();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Test(dataProvider = "newUser", dataProviderClass = MyDataProviders.class, priority = 5)
