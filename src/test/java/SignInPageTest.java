@@ -55,23 +55,15 @@ public class SignInPageTest extends TestBase {
 
     @Test
     public void signInIsEnabledTest() {
-        deleteRecording();
-        try {
-            startRecording();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (AWTException e) {
-            throw new RuntimeException(e);
-        }
+        //deleteRecording();
+        startRecording();
         logger.info("starting to test sign in is enabled.");
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
-        sleep(1000);
-                MyCredential.email2 = MyAccountingData.incorrectemail;
+        MyCredential.email2 = MyAccountingData.incorrectemail;
         emailField.sendKeys(MyCredential.email2);
         sleep(1000);
-
 
         WebElement passField = findByXPath("//input[@placeholder=\"Password\"]");
         passField.click();
@@ -85,11 +77,7 @@ public class SignInPageTest extends TestBase {
 
         Assert.assertFalse(signInButton.isEnabled());
         logger.info("finished signInIsEnabledTest.");
-        try {
-            stopRecoding();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        stopRecoding();
     }
 
     @Test(dataProvider = "newUser", dataProviderClass = MyDataProviders.class, priority = 5)

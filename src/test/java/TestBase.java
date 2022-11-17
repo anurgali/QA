@@ -125,22 +125,32 @@ public class TestBase {
         return screenshot.getAbsolutePath();
     }
 
-    public void startRecording() throws IOException, AWTException {
+    public void startRecording() {
         File file = new File("src/test/resources/records");
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         Rectangle captureSize = new Rectangle(0,0, dimension.width, dimension.height);
         GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-        sr = new Recorder(gc, captureSize,
-                new Format(MediaTypeKey, FormatKeys.MediaType.FILE, MimeTypeKey, MIME_AVI),
-                new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_MJPG, CompressorNameKey, ENCODING_AVI_MJPG,
-                        DepthKey, 24, FrameRateKey, Rational.valueOf(15), QualityKey, 1.0f, KeyFrameIntervalKey, 15*60),
-                new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey,"black", FrameRateKey, Rational.valueOf(30)),
-                null, file, "MyVideo");
-        sr.start();
+        try {
+            sr = new Recorder(gc, captureSize,
+                    new Format(MediaTypeKey, FormatKeys.MediaType.FILE, MimeTypeKey, MIME_AVI),
+                    new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_MJPG, CompressorNameKey, ENCODING_AVI_MJPG,
+                            DepthKey, 24, FrameRateKey, Rational.valueOf(15), QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
+                    new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey, Rational.valueOf(30)),
+                    null, file, "MyVideo");
+            sr.start();
+        } catch (IOException e1){
+            logger.error(e1.getMessage());
+        } catch (AWTException e2) {
+            logger.error(e2.getMessage());
+        }
     }
 
-    public void stopRecoding() throws IOException {
-        sr.stop();
+    public void stopRecoding() {
+        try {
+            sr.stop();
+        } catch (IOException e1){
+            logger.error(e1.getMessage());
+        }
     }
 
     public void deleteRecording(){
