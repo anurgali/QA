@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,20 +27,25 @@ public class SignInPageTest extends TestBase {
     }
 
     //test1
-    @Test
+    @Test(priority = 0)
     public void headerTest() throws Exception {
         logger.info("headerTest");
-        WebElement tag = driver.findElement(By.tagName("h1"));
+        WebElement tag = findByTagName("h1");
         Assert.assertEquals(tag.getText(),"Sign In to your Account");
     }
 
-    @Test
+    private WebElement findByTagName(String h1) {
+        return driver.findElement(By.tagName(h1));
+    }
+
+
+    @Test(priority = 1)
     public void mySecondTest(){
-        WebElement tag = driver.findElement(By.tagName("h1"));
+        WebElement tag = findByTagName("h1");
         Assert.assertTrue(tag.getText().contains("Sign In"));
     }
 
-    @Test
+    @Test(priority = 2)
     public void findClass(){
         WebElement or = findByXPath("//p[@class='StyledLineSeparator__TextSeparator-sc-tvmx61-2 gGaiwp']");
         Assert.assertEquals(or.getText(),"or");
@@ -49,15 +55,15 @@ public class SignInPageTest extends TestBase {
 
     @Test
     public void signInIsEnabledTest() {
+        //deleteRecording();
+        startRecording();
         logger.info("starting to test sign in is enabled.");
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
-
-                MyCredential.email2 = MyAccountingData.incorrectemail;
+        MyCredential.email2 = MyAccountingData.incorrectemail;
         emailField.sendKeys(MyCredential.email2);
-
-
+        sleep(1000);
 
         WebElement passField = findByXPath("//input[@placeholder=\"Password\"]");
         passField.click();
@@ -66,14 +72,15 @@ public class SignInPageTest extends TestBase {
         sleep(1000);
         Actions a=new Actions(driver);
         a.moveToElement(passField).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
-
+        sleep(1000);
         WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
 
         Assert.assertFalse(signInButton.isEnabled());
         logger.info("finished signInIsEnabledTest.");
+        stopRecoding();
     }
 
-    @Test(dataProvider = "newUser", dataProviderClass = MyDataProviders.class)
+    @Test(dataProvider = "newUser", dataProviderClass = MyDataProviders.class, priority = 5)
     public void correctCredentialsTest(String email, String pass) {
         signIn(email, pass);
         sleep(1000);
@@ -88,6 +95,18 @@ public class SignInPageTest extends TestBase {
         WebElement headEmail = findByXPath("//span[@class='StyledHeader__StyledUserEmail-sc-17b3aa3-7 Jmbq']");
         Assert.assertEquals(headEmail.getText(), user.getEmail().toLowerCase());
     }
+
+    @Test(dataProvider = "NegativescenarioSignInCSV", dataProviderClass = DataProvidersTel31.class)
+    public void wrongCredentialsTestWithCsv(MyCredential user) {
+        signIn(user.getEmail(), user.getPassword());
+        sleep(1000);
+        WebElement invalidEmailOrPass = findByXPath("//div[@class='StyledSignIn__Error-sc-t0jmvd-4 eYlGJp']");
+        Assert.assertEquals(invalidEmailOrPass.getText(), "Invalid Email or password.");
+
+
+
+    }
+
 
     @Test
     public void tenErrorTest() {
