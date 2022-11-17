@@ -35,8 +35,9 @@ public class ResetPass extends TestBase {
         WebElement text = driver.findElement(By.tagName("strong"));
 
 
-        Assert.assertEquals(text.getText(),"An email has been sent to you.");
+        Assert.assertEquals(text.getText(),"Thank you. An email has been sent to you. " +
+                "Please follow the email instructions in order to complete your password reset.");
     }
     }
-
+//tel_32
 
