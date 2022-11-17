@@ -6,3 +6,4 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+/libraries/Maven__ch_qos_logback_logback_classic_1_4_4.xml
