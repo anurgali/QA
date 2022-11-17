@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CloudRein" verbose="1" >
+
+<test name="PublicPageTests" >
+    <classes>
+        <class name="SignInPageTest">
+            <methods>
+                <include name="signInIsEnabledTest"/>
+                <include name="tenErrorTest"/>
+
+
+
+            </methods>
+        </class>
+    </classes>
+</test>
+</suite>
