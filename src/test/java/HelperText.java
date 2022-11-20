@@ -1,10 +1,20 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 public class HelperText  extends TestBase{
+
+
+    @BeforeMethod
+    public void logMethod(Method m, Object[] p){
+        logger.info("Starting method: " + m.getName()+" with data: "+ Arrays.asList(p));
+    }
 
     @BeforeSuite
     public void setUpInternal(){
