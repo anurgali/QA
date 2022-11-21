@@ -31,7 +31,7 @@ public class ResetPass extends TestBase {
         WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
         signInButton.click();
 
-       // Thread.sleep(5000);
+       sleep(5000);
         WebElement text = driver.findElement(By.tagName("strong"));
 
 

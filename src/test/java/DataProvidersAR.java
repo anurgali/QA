@@ -10,7 +10,7 @@ import java.util.List;
 public class DataProvidersAR {
 
     @DataProvider
-    public Iterator<Object[]> newUser(){
+    public Iterator<Object[]> newUserAR(){
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{"testQA36a@gmail.com","Qwer1234"});
 
@@ -24,7 +24,7 @@ public class DataProvidersAR {
         return list.iterator();
     }
     @DataProvider
-    public Iterator<Object[]> newUserWithCsv() {
+    public Iterator<Object[]> newUserARWithCsv() {
         List<Object[]> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(
                 new FileReader("src/test/resources/AR.1.csv"))) {
