@@ -153,7 +153,7 @@ public class TestBase {
         }
     }
 
-    @BeforeSuite
+   // @BeforeSuite
     public void deleteRecording(){
         File dir = new File("src/test/resources/records");
         for (File f: dir.listFiles()){
