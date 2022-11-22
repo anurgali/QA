@@ -24,12 +24,12 @@ public class ResetPass extends TestBase {
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
-        emailField.sendKeys(email);
+        emailField.sendKeys(email3);
 
 
 
         WebElement submitButton = findByXPath("//button[@type=\"submit\"]");
-        signInButton.click();
+        submitButton.click();
 
        sleep(5000);
         WebElement text = driver.findElement(By.tagName("strong"));
