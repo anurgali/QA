@@ -28,7 +28,7 @@ public class ResetPass extends TestBase {
 
 
 
-        WebElement signInButton = findByXPath("//button[@type=\"submit\"]");
+        WebElement submitButton = findByXPath("//button[@type=\"submit\"]");
         signInButton.click();
 
        sleep(5000);
