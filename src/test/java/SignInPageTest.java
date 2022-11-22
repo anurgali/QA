@@ -97,7 +97,7 @@ public class SignInPageTest extends TestBase {
     }
 
     @Test(dataProvider = "NegativescenarioSignInCSV", dataProviderClass = DataProvidersTel31.class)
-    public void wrongCredentialsTestWithCsv(MyCredential user) {
+    public void tenErrorTest(MyCredential user) {
         signIn(user.getEmail(), user.getPassword());
         sleep(1000);
         WebElement invalidEmailOrPass = findByXPath("//div[@class='StyledSignIn__Error-sc-t0jmvd-4 eYlGJp']");
@@ -110,6 +110,7 @@ public class SignInPageTest extends TestBase {
 
     @Test
     public void tenErrorTest() {
+        startRecording();
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
@@ -124,6 +125,8 @@ public class SignInPageTest extends TestBase {
         for (int i=0; i<10; i++) {
             signInButton.click();
             sleep(100);
+        stopRecoding();
+
         }
 
 

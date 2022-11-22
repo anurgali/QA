@@ -14,10 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.awt.*;
 import java.io.File;
@@ -156,6 +153,7 @@ public class TestBase {
         }
     }
 
+    @BeforeSuite
     public void deleteRecording(){
         File dir = new File("src/test/resources/records");
         for (File f: dir.listFiles()){
