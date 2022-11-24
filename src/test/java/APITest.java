@@ -3,6 +3,7 @@ import com.google.gson.JsonParser;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import org.apache.http.entity.ContentType;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -26,12 +27,12 @@ public class APITest {
                         "  \"password\": \""+password+"\"\n" +
                         "}", ContentType.APPLICATION_JSON)
                 .execute();
-        String respJson=resp.returnContent().toString();
-        System.out.println(respJson);
-
-
-        JsonElement jsonElement = JsonParser.parseString(respJson);
-        String token = jsonElement.getAsJsonObject().get("accessToken").getAsString();
-        System.out.println(token);
+//        String respJson=resp.returnContent().toString();
+//        System.out.println(respJson);
+//
+//        JsonElement jsonElement = JsonParser.parseString(respJson);
+//        String token = jsonElement.getAsJsonObject().get("accessToken").getAsString();
+//        System.out.println(token);
+        Assert.assertEquals(resp.returnResponse().getStatusLine().getStatusCode(),200);
     }
 }
