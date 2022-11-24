@@ -10,9 +10,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-public class ResetPass extends TestBase {
+public class ResetPassAR extends TestBase {
+
     @BeforeSuite
     public void setUpInternal(){
 
@@ -21,15 +23,16 @@ public class ResetPass extends TestBase {
 
     @Test(dataProvider = "reset", dataProviderClass = DataProvidersAR.class)
     public void resetPassTest(String email)  {
+        logger.info("Starting test: " + "reset");
         WebElement emailField = findByXPath("//input[@placeholder=\"Email\"]");
         emailField.click();
         emailField.clear();
-        emailField.sendKeys(email3);
+        emailField.sendKeys(email);
 
 
 
-        WebElement submitButton = findByXPath("//button[@type=\"submit\"]");
-        submitButton.click();
+        WebElement resetButton = findByXPath("//button[@type=\"submit\"]");
+        resetButton.click();
 
        sleep(5000);
         WebElement text = driver.findElement(By.tagName("strong"));
@@ -37,7 +40,9 @@ public class ResetPass extends TestBase {
 
         Assert.assertEquals(text.getText(),"Thank you. An email has been sent to you. " +
                 "Please follow the email instructions in order to complete your password reset.");
+        logger.info("finished resetPassTest."); }
     }
-    }
-//tel_32
+
+//tel_32 .Message: ..WARNING: Unable to find an exact match for CDP version 107,
+// so returning the closest version found: 106..
 

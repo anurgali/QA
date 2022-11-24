@@ -12,7 +12,7 @@ public class DataProvidersAR {
     @DataProvider
     public Iterator<Object[]> newUserAR(){
         List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{"testQA36a@gmail.com","Qwer1234"});
+        list.add(new Object[]{"testQA36a@gmail.com"});
 
         return list.iterator();
     }
@@ -20,7 +20,7 @@ public class DataProvidersAR {
     @DataProvider
     public Iterator<Object[]> reset(){
         List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{"testQA36a@gmail.com","Qwer1234"});
+        list.add(new Object[]{"testQA36a@gmail.com"});
         return list.iterator();
     }
     @DataProvider
