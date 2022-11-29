@@ -6,12 +6,13 @@ public class MyCredential {
     public static final String passEmail1 = "Qwer1234";
     public static  String email2;
    public static String password2;
-
+    public static String token;
 
 
 
     private String email;
     private String password;
+
 
     public MyCredential(String email, String password) {
         this.email = email;
