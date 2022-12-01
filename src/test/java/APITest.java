@@ -34,11 +34,12 @@ public class APITest {
         String respJson=resp.returnContent().toString();
         System.out.println(respJson);
 
-
         JsonElement jsonElement = JsonParser.parseString(respJson);
         String token = jsonElement.getAsJsonObject().get("accessToken").getAsString();
-        Assert.assertTrue(token.length()>0);
         System.out.println(token);
+        Assert.assertTrue(token.length()>0);
+        Assert.assertEquals(resp.returnResponse().getStatusLine().getStatusCode(),200);
+
     }
     @Test
     public void partnersResellersTest() throws IOException{
